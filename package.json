@@ -1,0 +1,41 @@
+{
+  "name": "@kosatyi/ejs-watcher",
+  "version": "0.0.0",
+  "type": "module",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "source": "index.js",
+  "files": [
+    "index.js",
+    "index.d.ts"
+  ],
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    }
+  },
+  "devDependencies": {
+    "@kosatyi/ejs": "*",
+    "rollup": "^3.24.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kosatyi/ejs-watcher.git"
+  },
+  "scripts": {
+    "start": "rm -rf dist && rollup -c -w",
+    "build": "rm -rf dist && rollup -c",
+    "prepublishOnly": "npm run build",
+    "version": "npm run build",
+    "postversion": "git push && git push --tags"
+  },
+  "types": "index.d.ts",
+  "description": "@kosatyi/ejs template watcher",
+  "author": "Stepan Kosatyi",
+  "license": "MIT",
+  "dependencies": {
+    "chokidar": "^3.5.3"
+  }
+}
